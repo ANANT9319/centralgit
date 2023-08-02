@@ -1,0 +1,37 @@
+---
+   - name: Check Disk Space Usage
+     hosts: 172.16.8.10
+     tasks:
+           - name: Disk usage from command module
+             command: df -h
+             register: space
+           - debug:
+                   var: space
+
+   - name: Check the remote host uptime
+     hosts: 172.16.8.10
+     tasks:
+            - name: Execute the Uptime command over Command module
+              register: uptimeoutput
+              command: "uptime"
+
+   - name: Check the remote host date
+     hosts: 172.16.8.10
+     tasks:
+            - name: Execute the Uptime command over Command module
+              command: "date"
+              register: dateoutput
+
+   - name: Check the remote host memory
+     hosts: 172.16.8.10
+     tasks:
+            - name: Execute the Uptime command over Command module
+              command: free -m
+              register: memoryoutput
+
+   - name: Check the remote hostname
+     hosts: 172.16.8.10
+     tasks:
+            - name: Execute the Uptime command over Command module
+              command: "hostname"
+              register: hostnameoutput
